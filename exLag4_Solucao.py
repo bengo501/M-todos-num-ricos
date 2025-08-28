@@ -1,3 +1,5 @@
+
+
 """
 Métodos Numéricos - Interpolação
 Solução completa dos exercícios do exlab4.txt
