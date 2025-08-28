@@ -1,0 +1,160 @@
+Métodos Numéri
+os
+
+Exer
+í
+ios
+
+Sistemas lineares
+
+1. Um parquinho tem 4 brinquedos para as 
+rianças, 
+hamados de A, B, C e D. Vo
+ê sabe
+
+isto sobre o parque:
+
+(a) O brinquedo A (cid:28)
+a bem perto do portão prin
+ipal por onde 
+hegam 20 pessoas por
+
+hora.
+
+(b) O brinquedo C (cid:28)
+a perto de um portão se
+undário por onde 
+hegam 10 pessoas por
+
+hora.
+
+(
+) As pessoas sempre vão primeiro para o brinquedo mais perto do portão por onde
+
+entraram;
+
+(d) Depois deste brinquedo, metade das pessoas quer ir para o brinquedo B e o resto se
+
+divide em três partes: uma parte vai embora e 
+ada uma das outras partes vai para
+
+um dos outros dois brinquedos do parque;
+
+(e) Depois de brin
+ar em B ou D as pessoas se dividem igualmente entre A, C e D.
+
+Com estas informações, 
+al
+ule quantas pessoas vão brin
+ar em 
+ada um dos 4 brinquedos.
+
+2. Vo
+ê gostaria de en
+ontrar o polinmio de ter
+eiro grau que passa pelos quatro pontos
+
+(−1, −3), (0, −1), (1, 2) e (2, −2). Use um sistema linear para resolver o problema.
+
+3. Um amigo quími
+o pede a sua a juda: ele está analisando um 
+omposto X e a
+ha que ele
+pode ser 
+onstituído de 4 substân
+ias (A, B , C e D), 
+ada uma por sua vez 
+onstituída de
+vários 
+omponentes (a, b, c. . . ), mas ele não sabe em que proporção as substân
+ias foram
+
+misturadas. Ao passar uma amostra por um 
+romatógrafo, ele des
+obre a proporção dos
+
+omponentes em X :
+
+Componente
+
+em X em A em B em C em D
+
+Proporção
+
+a
+b
+c
+d
+
+26% 15% 36% 20% 31%
+
+19% 28% 11% 15% 22%
+
+31% 27% 36% 33% 24%
+
+24% 30% 17% 32% 23%
+
+Usando estas informações, determine 
+omo as substân
+ias A, B , C e D foram misturadas
+para que seja obtida a substân
+ia X .
+
+4. Esta é uma versão do exer
+í
+io 3 que é mais próxima da vida real. O 
+omposto X pode
+ser 
+onstituído de 4 substân
+ias (A, B , C e D), 
+ada uma por sua vez 
+onstituída de
+vários 
+omponentes (a, b, c. . . ), mas desta vez os exames mostram que existem outras
+substân
+ias ainda des
+onhe
+idas em X . Por isso, a 
+omposição de X na tabela não soma
+
+100% e as per
+entagens que faltam são outros 
+omponentes ainda não identi(cid:28)
+ados ou
+
+onsiderados pou
+o importantes:
+
+Componente
+
+em X em A em B em C em D
+
+Proporção
+
+a
+b
+c
+d
+
+24.3% 15% 36% 20% 31%
+
+15%
+
+28% 11% 15% 22%
+
+26.2% 27% 36% 33% 24%
+
+21.5% 30% 17% 32% 23%
+
+1
+
+Usando estas informações, determine mais uma vez 
+omo A, B , C e D foram misturadas
+para que seja obtida a substân
+ia X . Interprete sua resposta 
+om 
+uidado.
+
+2
+
+

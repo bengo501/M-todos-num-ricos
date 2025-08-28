@@ -1,0 +1,236 @@
+Métodos Numérios
+
+Exeríios
+
+Interpolação
+
+1. Existe somente uma parábola p(x) que passa nos pontos (2, 3), (3, 5) e (5, 7). Enontre-a
+
+e depois enontre os pontos x∗
+
+em que p(x∗) = 0.
+
+2. Três 
+ientistas estão analisando dados e querem usar interpolação de Newton para ahar
+
+o polinmio de menor grau que passa por alguns pontos. Para ter 
+erteza da análise
+
+eles estão trabalhando separadamente e depois só vão 
+omparar os seus polinmios. Ana
+
+organiza seus pontos da seguinte forma:
+
+x y
+
+1
+
+2
+
+3
+
+5
+
+5
+
+4
+
+7
+
+8
+
+Beto pegou seus pontos na ordem inversa:
+
+x y
+
+7
+
+8
+
+5
+
+4
+
+3
+
+5
+
+1
+
+2
+
+E (cid:28)nalmente Carol bagunçou suas anotações e usou os pontos assim:
+
+x y
+
+5
+
+4
+
+1
+
+2
+
+7
+
+8
+
+3
+
+5
+
+Desubra os polinmios que os três vão enontrar e determine se eles são o mesmo po-
+
+linmio ou se não são. Explique o que aonteeu.
+
+3. A tabela a seguir 
+ontém os dados sobre a produção 
+hinesa de aço (mais espei(cid:28)
+amente
+
+o tipo de aço 
+hamado (cid:16)ferro gusa(cid:17)) na déada de 1990. Seu desa(cid:28)o é experimentar
+
+a interpolação polinomial para tentar prever o futuro (ou seja, fazer extrapolação, que
+
+ostuma ser mais arrisado que interpolação.
+
+Para fazer um teste, ignore o último ano da tabela e use os pontos anteriores para prever
+
+a produção para o último ano e 
+ompare 
+om o valor verdadeiro.
+
+Se voê 
+on(cid:28)ar no resultado, pode tentar prever o valor no ano que vai vir depois do (cid:28)m
+
+da tabela. Mais tarde proure a informação na Internet e 
+on(cid:28)ra 
+om seu resultado.
+
+1
+
+Ano Produção (em Mton)
+
+1990
+
+62,4
+
+1991
+
+67,7
+
+1992
+
+75,9
+
+1993
+
+87,4
+
+1994
+
+97,4
+
+1995
+
+105,3
+
+1996
+
+107,2
+
+4. A tabela a seguir 
+ontém os dados sobre a produção brasileira de ovos em anos reentes.
+
+Ajuste os dados e preveja a produção para o ano de 2022. Lembre-se de que extrapolação
+
+é uma atividade perigosa, por isso mesmo tente enontrar o número 
+orreto no site do
+
+IBGE.
+
+Ano Produção (em mil dúzias)
+
+2016
+
+3.097.841
+
+2017
+
+3.313.061
+
+2018
+
+3.606.747
+
+2019
+
+3.842.136
+
+2020
+
+3.967.138
+
+2021
+
+4.012.512
+
+5. A tabela a seguir 
+ontém os dados sobre a produção brasileira de 
+amarão 
+ultivado, em
+
+anos reentes. Faça de 
+onta que não sabe o valor para o ano de 2017 e tente estimá-lo
+
+usando os outros anos 
+omo pontos de referênia. Se 
+on(cid:28)ar no resultado obtido, preveja
+
+a produção para o ano de 2021. Con(cid:28)ra no IBGE
+
+Ano Produção (em ton)
+
+2013
+
+64.678
+
+2014
+
+65.028
+
+2015
+
+70.521
+
+2016
+
+52.127
+
+2017
+
+41.078
+
+2018
+
+47.316
+
+2019
+
+56.667
+
+2020
+
+66.561
+
+2021
+
+6. Usando o método dos mínimos quadrados, faça um a juste dos dados da tabela anterior:
+
+enontre a melhor reta que aproxima os dados e depois enontre o melhor polinmio de
+
+grau 3 que aproxima os mesmos dados.
+
+2
+

@@ -1,0 +1,278 @@
+Métodos Numéri
+os
+
+Exer
+í
+ios
+
+Cadeias de Markov
+
+1. Uma sorveteria da 
+idade faz uma pesquisa 
+om seus 
+lientes, que devem responder 
+om
+
+Sim ou Não a esta pergunta:
+
+O nosso sorvete de 
+ho
+olate é melhor do que o das outras sorveterias?
+
+Depois de 
+oletarem muitas respostas, eles guardaram os dados e repetiram a pesquisa
+
+um mês depois. Para as pessoas que responderam nas duas vezes, surgiu a tabela abaixo:
+
+Primeira
+
+Sim
+
+Não
+
+Segunda resposta
+
+resposta
+
+Sim
+
+70%
+
+30%
+
+Não
+
+60%
+
+40%
+
+Então, supondo que as pessoas sempre mudem de opinião de a
+ordo 
+om a tabela, quantos
+
+dos 1000 
+lientes da sorveteria a
+harão que o sorvete de 
+ho
+olate é o melhor depois da
+
+sua quarta visita? E a longo prazo, 
+om um número ilimitado de visitas?
+
+2. Em um país imaginário existem três times de futebol: Trêmio, Inten
+ional e Cassis. De
+
+a
+ordo 
+om os resultados dos jogos, no (cid:28)nal do ano os tor
+edores podem tro
+ar de time
+
+em bus
+a de um time mais do seu agrado:
+
+(a) De Trêmio para Inten
+ional 
+om 12% de probabilidade;
+
+(b) De Inten
+ional para Cassis 
+om 8% de probabilidade;
+
+(
+) De Cassis para Trêmio 
+om 11% de probabilidade;
+
+(d) De Inten
+ional para Trêmio 
+om 7% de probabilidade;
+
+(e) De Cassis para Inten
+ional 
+om 9% de probabilidade;
+
+(f ) De Trêmio para Cassis 
+om 10% de probabilidade;
+
+Se no ano 0 o time do Trêmio tinha 10000 tor
+edores, o Cassis tinha 6000 e o Inten
+ional
+
+tinha 11000, 
+al
+ule quantos tor
+edores terá 
+ada time ano a ano, até que as tor
+idas
+
+estabilizem.
+
+3. Um lobo guará 
+ostuma 
+açar seu almoço em uma de três regiões diferentes. Se ho je ele
+
+aça em uma região, amanhã ele tem 50% de probabilidade de repetir esta região. Se ele
+
+aça na região A, amanhã ele não 
+aça em B. Se ele 
+aça em B (ou em C), no dia seguinte
+
+ele es
+olhe uma das outras duas regiões, es
+olhendo 
+ada uma 
+om probabilidade de 50%.
+
+Com estas informações, 
+umpra as etapas abaixo:
+
+(a) Apresente a matriz de transições;
+
+(b) Se na segunda feira ele 
+aça em A, qual a probabilidade dele estar 
+açando em C na
+
+quarta feira?
+
+(
+) À medida que o tempo passar, em que per
+entagem das vezes ele estará 
+açando em
+
+B?
+
+4. Em um país existem Ri
+os, Médios e Pobres. Depois de muito estudo 
+hegou-se à 
+on-
+
+lusão de que a mobilidade so
+ial segue estas regras:
+
+(a) Das 
+rianças Ri
+as, 70% permane
+em Ri
+as enquanto 20% delas passam a ser Médias
+
+e 10% passam a ser Pobres;
+
+1
+
+(b) Das 
+rianças Médias, 70% permane
+em Médias enquanto o resto é dividido igual-
+
+mente entre Ri
+os e Pobres.
+
+(
+) Para as 
+rianças Pobres, 60% permane
+em Pobres enquanto 30% tornam-se Médias
+
+e 10% passam a Ri
+as.
+
+Agora 
+umpra as tarefas a seguir:
+
+(a) Apresente a matriz de transições;
+
+(b) Determine a probabilidade de uma pessoa Pobre ter netos Ri
+os.
+
+(
+) E se forem bisnetos, qual a probabilidade?
+
+(d) Determine a proporção esperada de Ri
+os, Médios e Pobres, a longo prazo;
+
+(e) Devido a uma ação de redistribuição de renda do governo, o 
+omportmento para as
+
+rianças Pobres se altera: agora 50% permane
+em Pobres enquanto 40% tornam-se
+
+Médias e 10% passam a Ri
+as. Determine a proporção esperada de Ri
+os, Médios e
+
+Pobres, a longo prazo.
+
+5. Guilherme e Christian jogam um jogo de dados de a
+ordo 
+om as seguintes regras:
+
+(a) Guilherme ven
+e o jogo se tirar um 5 e na próxima jogada tirar outro 5;
+
+(b) Christian ven
+e o jogo se tirar um 5 e na próxima jogada tirar um 6.
+
+Depois de pensar um pou
+o, vo
+ê faz o diagrama abaixo para 
+ada um dos jogadores,
+
+onde N5 signi(cid:28)
+a (cid:16)não é 5(cid:17):
+
+Guilherme pre
+isa 
+hegar ao seu primeiro
+
+Christian pre
+isa 
+hegar ao seu primeiro 5
+
+5 e depois ao segundo 5, quando ven
+erá o
+
+e depois ao 6, quando ven
+erá o jogo.
+
+jogo.
+
+Agora use os diagramas a
+ima para 
+al
+ular a probabilidade de 
+ada um dos jogadores
+
+ven
+er o jogo.
+
+6. Quando as letras de A a F forem 
+olo
+adas em (cid:28)la, pode-se saltar de uma letra para suas
+
+vizinhas 
+om probabilidades iguais (uma vizinha: 100%, duas vizinhas: 50% para 
+ada
+
+uma). Modele o problema 
+omo uma 
+adeia de Markov e mostre a matriz 
+orrespondente;
+
+7. Use a matriz anterior para des
+obrir a distribuição de probabilidades de visitar as letras
+
+à medida que o número de saltos aumenta e a
+he a letra que será mais visitada;
+
+8. Altere a matriz para re(cid:29)etir uma nova situação: se estivermos em uma vogal também
+
+temos uma probabilidade de 2% de pular para uma letra duas posições adiante (isto deve
+
+ser des
+ontado das probabilidades já existentes!).
+
+9. Cal
+ule a distribuição de probabilidades para esta nova situação e veri(cid:28)que se a letra mais
+
+visitada se altera.
+
+2
+

@@ -1,0 +1,1523 @@
+Métodos Numéri
+os
+
+Lista geral de exer
+í
+ios
+
+Prof. João B. Oliveira
+
+Sistemas de ponto (cid:29)utuante
+
+1. Examine o algoritmo abaixo e responda as perguntas a seguir:
+
+double aux = 1.0;
+
+while 1 + aux > 1 {
+
+print aux;
+
+aux = aux / 2;
+
+}
+
+(a) O algoritmo termina? Por que?
+
+(b) O que signi(cid:28)
+a o valor impresso na última linha do algoritmo (se um dia ele termi-
+
+nar?)
+
+(
+) Teste o algoritmo na sua linguagem de programação preferida e veri(cid:28)que se ele
+
+termina e qual o valor impresso. Se desejar, adi
+ione um 
+ontador para informar
+
+quantas vezes aux foi dividido dentro do laço. Esse valor é interessante?
+
+2. Vo
+ê deve implementar um programa que 
+umpra as seguintes tarefas:
+
+(a) Ele re
+ebe uma expressão no formato
+
+val1 op val2
+
+onde op é uma operação (+,
+
+−, ∗
+
+,/) e val1 e val2 são dois valores em ponto (cid:29)utuante,
+
+NaN ou ±∞. Os valores são armazenados em variáveis (cid:29)oat de 32 bits.
+
+(b) Depois de re
+eber a expressão seu programa deve limpar o registrador de ex
+eções
+
+de ponto (cid:29)utuante;
+
+(
+) Depois ele deve realizar a operação op e mostrar o resultado dela;
+
+(d) Seu programa também deve mostrar a 
+on(cid:28)guração de bits das duas entradas e do
+
+resultado. Tome 
+uidado 
+om a endianness do seu pro
+essador para que a saída seja
+
+apresentada 
+orretamente;
+
+(e) Seu programa também deve informar se alguma ex
+eção do padrão IEEE-754 foi
+
+sinalizada quando a operação foi feita. Use o registrador de status e não tente
+
+prever vo
+ê mesmo quais vão ser as ex
+eções!
+
+Por exemplo, seu programa poderia fun
+ionar assim:
+
+> 
+al
+uleitor
+
+21
+
+/
+
+-0
+
+Re
+ebi 21.000000 / -0.000000 e resultado deu -inf
+
+val1 = 0 10000011 01010000000000000000000 = 21
+
+val2 = 1 00000000 00000000000000000000000 = -0
+
+res
+
+= 1 11111111 00000000000000000000000 = -inf
+
+Ex
+eção FE_INEXACT: 0
+
+Ex
+eção FE_DIVBYZERO: 1
+
+1
+
+Ex
+eção FE_UNDERFLOW: 0
+
+Ex
+eção FE_OVERFLOW: 0
+
+Ex
+eção FE_INVALID: 0
+
+Teste seu programa 
+om operações diferentes, 
+omo 0/0, 1035
+
+1035
+
+, 1/
+
+∞, 0
+
+∗∞, 10−40/10−40
+
+∗
+
+e outras.
+
+3. Usando software para plotagem de funções, plote a função
+
+f (x) = x3
+
+3x2 + 3x
+
+1
+
+−
+
+−
+
+na região em torno de x = 1. Tente por exemplo x = [0.99, 1.01]. Depois tente plotar a
+
+função em intervalos ainda menores em torno de 1. Explique o que 
+omeça a a
+onte
+er
+
+quando vo
+ê (cid:28)zer o grá(cid:28)
+o perto de x = [0.999975, 1.000025] e intervalos ainda menores.
+
+Depois repita a aventura 
+om
+
+g(x) = x3
+
+e veja se o problema a
+onte
+e da mesma forma.
+
+4. Vo
+ê resolveu 
+al
+ular exp(x) através da série dada por
+
+meuexp(x) = 1 + x +
+
+x2
+2!
+
++
+
+x3
+3!
+
++
+
+x4
+4!
+
++
+
+x5
+5!
+
+Vo
+ê 
+al
+ula meuexp(x) para alguns valores de x e tudo sai bem. Infelizmente, ao tentar
+
+al
+ular meuexp(x) para x negativo as 
+oisas 
+omeçam a sair errado. Tente entender o
+
+que está a
+onte
+endo 
+umprindo as seguintes etapas:
+
+(a) Plote meuexp(x) e a função exp(x) no intervalo x = [1, 5]. Adi
+ione mais termos à
+
+série se a
+har ne
+essário. Veja se as duas funções são razoavelmente próximas.
+
+(b) Agora tente os números negativos: plote as mesmas funções para x = [
+
+5,
+
+−
+
+1].
+
+−
+
+Interprete o que vo
+ê está vendo. Era para ser assim? Tem problema? Qual o
+
+problema?
+
+(
+) Teste esta idéia de última hora: para tentar resolver o problema quando x for negax) e ver
+
+tivo, vo
+ê pode experimentar 
+al
+ular meuexp(x) 
+omo se fosse 1/meuexp(
+
+−
+
+o que a
+onte
+e. Teste esta idéia e veri(cid:28)que se ela tem um 
+omportamento melhor.
+
+Resolução de equações
+
+1. Plote as funções f (x) e g(x) abaixo para x bem próximo de zero. Porém, antes de fazer
+isso vá para o papel (ou use seu software predileto) e divida f (x) por g(x), 
+on(cid:28)rmando
+que f (x)/g(x) = 1. Ou seja, estas duas fun
+ões são idênti
+as e devem dar sempre
+os mesmos resultados, independente de x. Plote e 
+on(cid:28)rme se isso a
+onte
+e. Se não
+
+a
+onte
+er, determine qual a função que foi desenhada 
+orretamente e qual o problema da
+
+função que dá resultados in
+orretos.
+
+f (x) = √x2 + 1
+x2
+√x2 + 1 + 1
+
+g(x) =
+
+−
+
+1
+
+2. Seu sistema de plotagem de funções tem um bug e só 
+onsegue plotar funções para x
+1 e 1. Com esta restrição, vo
+ê quer a
+har as quatro soluções reais de
+
+variando entre −
+f (x) = 0 para
+
+f (x) = 8x4
+Se vo
+ê não pode olhar para a função fora do intervalo [
+f (1/x) pode a judar a resolver o problema.
+
+238x3 + 1047x2
+
+−
+
+−
+
+−
+
+953x + 154
+
+1, 1], des
+ubra 
+omo plotar
+
+2
+
+3. Implemente o método de Heron para en
+ontrar a raiz quadrada de um número p.
+
+4. Crie um polinmio que tem 2, 3 e 4 
+omo raizes. Depois disso use o método da bisse
+ção
+
+para en
+ontrar uma raiz no intervalo [1, 5℄. Ele en
+ontra raizes? Uma delas? Todas?
+
+Quais? Sempre?
+
+5. Agora 
+rie um polinmio que tem 2, 3, 4 e 5 
+omo raizes e pro
+ure uma raiz no intervalo
+
+[1, 6℄. O que a
+onte
+eu? Vo
+ê pode adaptar seu algoritmo para se a justar a esta situação?
+
+6. Se vo
+ê tem um polinmio dado por p(x) = x5 + 18x3 + 34x2
+
+493x + 1431, analise o
+
+−
+
+algoritmo abaixo e determine o que signi(cid:28)
+am os valores que ele irá imprimir. Implemente-
+
+o em sua linguagem preferida e teste-o para vários valores de x, se for ne
+essário.
+
+void metodo( double x ) :
+
+double a[℄ = {1, 0, 18, 34, -493, 1431};
+
+double p = 0;
+
+para i = 0 a tamanho(a)-1 faça
+
+p = x * p + a[i℄;
+
+imprima x, p;
+
+7. Use o pedaço de 
+ódigo do problema 6 para implementar o método da se
+ante para
+
+en
+ontrar as raizes reais do polinmio. Talvez vo
+ê deva 
+omeçar perguntando quantas
+
+raizes reais podem existir.
+
+8. O algoritmo do problema 6 foi mudado misteriosamente. Analise o novo algoritmo e de-
+
+termine o que signi(cid:28)
+am os valores que ele irá imprimir. Implemente-o em sua linguagem
+
+preferida e teste-o para vários valores de x, se for ne
+essário.
+
+void metodo( double x ) :
+
+double a[℄ = {1, 0, 18, 34, -493, 1431};
+
+double p = 0;
+
+double q = 0;
+
+para i = 0 a tamanho(a)-1 faça
+
+q = x * q + p;
+
+p = x * p + a[i℄;
+
+imprima x, p, q;
+
+9. Adapte o algoritmo apresentado no problema 8 para 
+riar um algoritmo que usa o método
+
+de Newton para en
+ontrar uma solução do polinmio dado naquele problema. Use este
+
+roteiro:
+
+(a) Cal
+ule a 
+ota de Lagrange para p(x);
+
+(b) Cal
+ule a 
+ota de Cau
+hy para p(x);
+
+(
+) De
+ida pela a melhor 
+ota;
+
+(d) Use a informação da 
+ota para ter alguma estimativa ini
+ial e teste seu algoritmo
+
+para a
+har raizes.
+
+(e) Se sua linguagem preferida tem uma 
+lasse para números 
+omplexos, use-os para
+
+implementar o método de Newton usando números 
+omplexos para tentar en
+ontrar
+
+todas as raizes do polinmio. Por que (cid:16)tentar(cid:17)?
+
+10. Leia o que tem em https://en.wikipedia.org/wiki/Polynomial_long_division e
+
+veja se vo
+ê re
+onhe
+e isso da es
+ola. Depois pense nisso:
+
+(a) Temos um polinmio p(x) para en
+ontrar as raizes;
+
+3
+
+(b) Usamos o método de Newton e en
+ontramos uma raiz;
+
+(
+) Usamos o pro
+esso des
+rito no link para obter um polinmio p′(x) que tem as mesmas
+
+raizes de p(x), ex
+eto a que já en
+ontramos;
+
+(d) Continuamos o pro
+esso usando p′(x) 
+omo novo polinmio e a
+hamos mais uma
+
+raiz.
+
+O plano é ir a
+hando as raizes de p(x) de uma em uma, gerando novos polinmios que
+
+tem apenas as raizes que ainda não en
+ontramos, sem as que já foram en
+ontradas. Vo
+ê
+
+resolve fazer um teste:
+
+ˆ Come
+e 
+om o polinmio p(x) = x5
+
+20x4 + 155x3
+
+−
+
+−
+
+580x2 + 1044x
+
+−
+
+720. As raízes
+
+dele são 2, 3, 4, 5 e 6.
+
+ˆ Implemente o algoritmo de divisão de polinmios.
+
+ˆ A
+he uma das raizes de p(x) usando seu método preferido.
+ˆ Crie um novo polinmio p′(x) que não tem mais a raiz que vo
+ê a
+hou.
+ˆ A
+he mais uma raiz usando p′(x) e produza p′′(x), e assim por diante.
+
+Vo
+ê a
+hou problemas neste plano? Se existirem, vo
+ê propõe maneiras de 
+ontorná-los?
+
+Sistemas lineares
+
+1. Um parquinho tem 4 brinquedos para as 
+rianças, 
+hamados de A, B, C e D. Vo
+ê sabe
+
+isto sobre o parque:
+
+(a) O brinquedo A (cid:28)
+a bem perto do portão prin
+ipal por onde 
+hegam 20 pessoas por
+
+hora.
+
+(b) O brinquedo C (cid:28)
+a perto de um portão se
+undário por onde 
+hegam 10 pessoas por
+
+hora.
+
+(
+) As pessoas sempre vão primeiro para o brinquedo mais perto do portão por onde
+
+entraram;
+
+(d) Depois deste brinquedo, metade das pessoas quer ir para o brinquedo B e o resto se
+
+divide em três partes: uma parte vai embora e 
+ada uma das outras partes vai para
+
+um dos outros dois brinquedos do parque;
+
+(e) Depois de brin
+ar em B ou D as pessoas se dividem igualmente entre A, C e D.
+
+Com estas informações, 
+al
+ule quantas pessoas vão brin
+ar em 
+ada um dos 4 brinquedos.
+
+2. Use o método de Gauss-Ja
+obi para resolver o sistema abaixo partindo da estimativa
+
+ini
+ial [1, 1, 1, 1]. Vo
+ê pode fazer à mão (vai demorar um pou
+o) ou es
+rever um programa
+
+
+
+
+
+
+
+
+8x +2y +4z +5w =
+−
+x
+−
+3x +y +2z
+3y
+2x
+
+7
+4y +3z +w = 10
+4
+3
+−
+
+w =
+−
+z +3w =
+
+−
+
+−
+
+−
+
+−
+
+
+
+
+
+
+
+
+Agora resolva usando Gauss-Seidel e veja 
+omo a resposta é en
+ontrada mais depressa.
+
+3. Vo
+ê gostaria de en
+ontrar o polinmio de ter
+eiro grau que passa pelos quatro pontos
+
+(
+
+1,
+
+−
+
+3), (0,
+
+−
+
+1), (1, 2) e (2,
+
+−
+
+2). Use um sistema linear para resolver o problema.
+
+−
+
+4
+
+4. Um amigo quími
+o pede a sua a juda: ele está analisando um 
+omposto X e a
+ha que ele
+pode ser 
+onstituído de 4 substân
+ias (A, B , C e D), 
+ada uma por sua vez 
+onstituída de
+vários 
+omponentes (a, b, c. . . ), mas ele não sabe em que proporção as substân
+ias foram
+
+misturadas. Ao passar uma amostra por um 
+romatógrafo, ele des
+obre a proporção dos
+
+omponentes em X :
+
+Componente
+
+em X em A em B em C em D
+
+Proporção
+
+a
+b
+c
+d
+
+26% 15% 36% 20% 31%
+
+19% 28% 11% 15% 22%
+
+31% 27% 36% 33% 24%
+
+24% 30% 17% 32% 23%
+
+Usando estas informações, determine 
+omo as substân
+ias A, B , C e D foram misturadas
+para que seja obtida a substân
+ia X .
+
+5. Esta é uma versão do exer
+í
+io 4 que é mais próxima da vida real. O 
+omposto X pode
+ser 
+onstituído de 4 substân
+ias (A, B , C e D), 
+ada uma por sua vez 
+onstituída de
+vários 
+omponentes (a, b, c. . . ), mas desta vez os exames mostram que existem outras
+substân
+ias ainda des
+onhe
+idas em X . Por isso, a 
+omposição de X na tabela não soma
+
+100% e as per
+entagens que faltam são outros 
+omponentes ainda não identi(cid:28)
+ados ou
+
+onsiderados pou
+o importantes:
+
+Componente
+
+em X em A em B em C em D
+
+Proporção
+
+a
+b
+c
+d
+
+24.3% 15% 36% 20% 31%
+
+15%
+
+28% 11% 15% 22%
+
+26.2% 27% 36% 33% 24%
+
+21.5% 30% 17% 32% 23%
+
+Usando estas informações, determine mais uma vez 
+omo A, B , C e D foram misturadas
+para que seja obtida a substân
+ia X . Interprete sua resposta 
+om 
+uidado.
+
+6. Esta é mais uma versão do exer
+í
+io 4 ainda mais próxima da vida real. Agora o 
+omposto
+
+X pode ser 
+onstituído de 4 substân
+ias (A, B , C e D), 
+ada uma por sua vez 
+onstituída
+de vários 
+omponentes (a, b, c. . . ), mas desta vez os exames mostram que existem outras
+substân
+ias ainda des
+onhe
+idas também em A, B , C e D . Por isso, os números da tabela
+
+abaixo não somam 100% e as per
+entagens que faltam são outros 
+omponentes ainda não
+
+identi(cid:28)
+ados ou 
+onsiderados pou
+o importantes:
+
+Componente
+
+em X em A em B em C em D
+
+Proporção
+
+a
+b
+c
+d
+
+8%
+
+5%
+
+6%
+
+11% 17%
+
+7%
+
+8%
+
+11%
+
+5%
+
+6%
+
+12%
+
+7%
+
+16% 13% 14%
+
+12% 11% 12% 14%
+
+2%
+
+Usando estas informações, determine mais uma vez 
+omo A, B , C e D foram misturadas
+para que seja obtida a substân
+ia X . Interprete sua resposta 
+om 
+uidado.
+
+5
+
+Cadeias de Markov
+
+1. Uma sorveteria da 
+idade faz uma pesquisa 
+om seus 
+lientes, que devem responder 
+om
+
+Sim ou Não a esta pergunta:
+
+O nosso sorvete de 
+ho
+olate é melhor do que o das outras sorveterias?
+
+Depois de 
+oletarem muitas respostas, eles guardaram os dados e repetiram a pesquisa
+
+um mês depois. Para as pessoas que responderam nas duas vezes, surgiu a tabela abaixo:
+
+Primeira
+
+Segunda resposta
+
+resposta
+
+Sim
+
+Não
+
+Sim
+
+70%
+
+30%
+
+Não
+
+60%
+
+40%
+
+Então, supondo que as pessoas sempre mudem de opinião de a
+ordo 
+om a tabela, quantos
+
+dos 1000 
+lientes da sorveteria a
+harão que o sorvete de 
+ho
+olate é o melhor depois da
+
+sua quarta visita? E a longo prazo, 
+om um número ilimitado de visitas?
+
+2. Em um país imaginário existem três times de futebol: Trêmio, Inten
+ional e Cassis. De
+
+a
+ordo 
+om os resultados dos jogos, no (cid:28)nal do ano os tor
+edores podem tro
+ar de time
+
+em bus
+a de um time mais do seu agrado:
+
+(a) De Trêmio para Inten
+ional 
+om 12% de probabilidade;
+
+(b) De Inten
+ional para Cassis 
+om 8% de probabilidade;
+
+(
+) De Cassis para Trêmio 
+om 11% de probabilidade;
+
+(d) De Inten
+ional para Trêmio 
+om 7% de probabilidade;
+
+(e) De Cassis para Inten
+ional 
+om 9% de probabilidade;
+
+(f ) De Trêmio para Cassis 
+om 10% de probabilidade;
+
+Se no ano 0 o time do Trêmio tinha 10000 tor
+edores, o Cassis tinha 6000 e o Inten
+ional
+
+tinha 11000, 
+al
+ule quantos tor
+edores terá 
+ada time ano a ano, até que as tor
+idas
+
+estabilizem.
+
+3. Um lobo guará 
+ostuma 
+açar seu almoço em uma de três regiões diferentes. Se ho je ele
+
+aça em uma região, amanhã ele tem 50% de probabilidade de repetir esta região. Se ele
+
+aça na região A, amanhã ele não 
+aça em B. Se ele 
+aça em B (ou em C), no dia seguinte
+
+ele es
+olhe uma das outras duas regiões, es
+olhendo 
+ada uma 
+om probabilidade de 50%.
+
+Com estas informações, 
+umpra as etapas abaixo:
+
+(a) Apresente a matriz de transições;
+
+(b) Se na segunda feira ele 
+aça em A, qual a probabilidade dele estar 
+açando em C na
+
+quarta feira?
+
+(
+) À medida que o tempo passar, em que per
+entagem das vezes ele estará 
+açando em
+
+B?
+
+4. Em um país existem Ri
+os, Médios e Pobres. Depois de muito estudo 
+hegou-se à 
+on-
+
+lusão de que a mobilidade so
+ial segue estas regras:
+
+(a) Das 
+rianças Ri
+as, 70% permane
+em Ri
+as enquanto 20% delas passam a ser Médias
+
+e 10% passam a ser Pobres;
+
+6
+
+(b) Das 
+rianças Médias, 70% permane
+em Médias enquanto o resto é dividido igual-
+
+mente entre Ri
+os e Pobres.
+
+(
+) Para as 
+rianças Pobres, 60% permane
+em Pobres enquanto 30% tornam-se Médias
+
+e 10% passam a Ri
+as.
+
+Agora 
+umpra as tarefas a seguir:
+
+(a) Apresente a matriz de transições;
+
+(b) Determine a probabilidade de uma pessoa Pobre ter netos Ri
+os.
+
+(
+) E se forem bisnetos, qual a probabilidade?
+
+(d) Determine a proporção esperada de Ri
+os, Médios e Pobres, a longo prazo;
+
+(e) Devido a uma ação de redistribuição de renda do governo, o 
+omportmento para as
+
+rianças Pobres se altera: agora 50% permane
+em Pobres enquanto 40% tornam-se
+
+Médias e 10% passam a Ri
+as. Determine a proporção esperada de Ri
+os, Médios e
+
+Pobres, a longo prazo.
+
+5. Guilherme e Christian jogam um jogo de dados de a
+ordo 
+om as seguintes regras:
+
+(a) Guilherme ven
+e o jogo se tirar um 5 e na próxima jogada tirar outro 5;
+
+(b) Christian ven
+e o jogo se tirar um 5 e na próxima jogada tirar um 6.
+
+Depois de pensar um pou
+o, vo
+ê faz o diagrama abaixo para 
+ada um dos jogadores,
+
+onde N5 signi(cid:28)
+a (cid:16)não é 5(cid:17):
+
+Guilherme pre
+isa 
+hegar ao seu primeiro
+
+Christian pre
+isa 
+hegar ao seu primeiro 5
+
+5 e depois ao segundo 5, quando ven
+erá o
+
+e depois ao 6, quando ven
+erá o jogo.
+
+jogo.
+
+Agora use os diagramas a
+ima para 
+al
+ular a probabilidade de 
+ada um dos jogadores
+
+ven
+er o jogo.
+
+6. Quando as letras de A a F forem 
+olo
+adas em (cid:28)la, pode-se saltar de uma letra para suas
+
+vizinhas 
+om probabilidades iguais (uma vizinha: 100%, duas vizinhas: 50% para 
+ada
+
+uma). Modele o problema 
+omo uma 
+adeia de Markov e mostre a matriz 
+orrespondente;
+
+7. Use a matriz anterior para des
+obrir a distribuição de probabilidades de visitar as letras
+
+à medida que o número de saltos aumenta e a
+he a letra que será mais visitada;
+
+8. Altere a matriz para re(cid:29)etir uma nova situação: se estivermos em uma vogal também
+
+temos uma probabilidade de 2% de pular para uma letra duas posições adiante (isto deve
+
+ser des
+ontado das probabilidades já existentes!).
+
+9. Cal
+ule a distribuição de probabilidades para esta nova situação e veri(cid:28)que se a letra mais
+
+visitada se altera.
+
+7
+
+1
+
+Interpolação
+
+1. Existe somente uma parábola p(x) que passa nos pontos (2, 3), (3, 5) e (5, 7). En
+ontre-a
+
+e depois en
+ontre os pontos x∗
+
+em que p(x∗) = 0.
+
+2. Três 
+ientistas estão analisando dados e querem usar interpolação de Newton para a
+har
+
+o polinmio de menor grau que passa por alguns pontos. Para ter 
+erteza da análise
+
+eles estão trabalhando separadamente e depois só vão 
+omparar os seus polinmios. Ana
+
+organiza seus pontos da seguinte forma:
+
+x y
+
+1
+
+2
+
+3
+
+5
+
+5
+
+4
+
+7
+
+8
+
+Beto pegou seus pontos na ordem inversa:
+
+x y
+
+7
+
+8
+
+5
+
+4
+
+3
+
+5
+
+1
+
+2
+
+E (cid:28)nalmente Carol bagunçou suas anotações e usou os pontos assim:
+
+x y
+
+5
+
+4
+
+1
+
+2
+
+7
+
+8
+
+3
+
+5
+
+Des
+ubra os polinmios que os três vão en
+ontrar e determine se eles são o mesmo po-
+
+linmio ou se não são. Explique o que a
+onte
+eu.
+
+3. A tabela a seguir 
+ontém os dados sobre a produção 
+hinesa de aço (mais espe
+i(cid:28)
+amente
+
+o tipo de aço 
+hamado (cid:16)ferro gusa(cid:17)) na dé
+ada de 1990. Seu desa(cid:28)o é experimentar
+
+a interpolação polinomial para tentar prever o futuro (ou seja, fazer extrapolação, que
+
+ostuma ser mais arris
+ado que interpolação.
+
+Para fazer um teste, ignore o último ano da tabela e use os pontos anteriores para prever
+
+a produção para o último ano e 
+ompare 
+om o valor verdadeiro.
+
+Se vo
+ê 
+on(cid:28)ar no resultado, pode tentar prever o valor no ano que vai vir depois do (cid:28)m
+
+da tabela. Mais tarde pro
+ure a informação na Internet e 
+on(cid:28)ra 
+om seu resultado.
+
+Ano Produção (em Mton)
+
+1990
+
+62,4
+
+1991
+
+67,7
+
+1992
+
+75,9
+
+1993
+
+87,4
+
+1994
+
+97,4
+
+1995
+
+105,3
+
+1996
+
+107,2
+
+8
+
+4. A tabela a seguir 
+ontém os dados sobre a produção brasileira de ovos em anos re
+entes.
+
+Ajuste os dados e preveja a produção para o ano de 2022. Lembre-se de que extrapolação
+
+é uma atividade perigosa, por isso mesmo tente en
+ontrar o número 
+orreto no site do
+
+IBGE.
+
+Ano Produção (em mil dúzias)
+
+2016
+
+3.097.841
+
+2017
+
+3.313.061
+
+2018
+
+3.606.747
+
+2019
+
+3.842.136
+
+2020
+
+3.967.138
+
+2021
+
+4.012.512
+
+5. A tabela a seguir 
+ontém os dados sobre a produção brasileira de 
+amarão 
+ultivado, em
+
+anos re
+entes. Faça de 
+onta que não sabe o valor para o ano de 2017 e tente estimá-lo
+
+usando os outros anos 
+omo pontos de referên
+ia. Se 
+on(cid:28)ar no resultado obtido, preveja
+
+a produção para o ano de 2021. Con(cid:28)ra no IBGE
+
+Ano Produção (em ton)
+
+2013
+
+64.678
+
+2014
+
+65.028
+
+2015
+
+70.521
+
+2016
+
+52.127
+
+2017
+
+41.078
+
+2018
+
+47.316
+
+2019
+
+56.667
+
+2020
+
+66.561
+
+2021
+
+6. Usando o método dos mínimos quadrados, faça um a juste dos dados da tabela anterior:
+
+en
+ontre a melhor reta que aproxima os dados e depois en
+ontre o melhor polinmio de
+
+grau 3 que aproxima os mesmos dados.
+
+2 Diferen
+iação automáti
+a
+
+1. Use a função abaixo nas etapas a seguir:
+
+f (x, y, z) = 3x2y/z + x
+
+(y
+
+∗
+
+−
+
+z)
+
+(a) De
+omponha a avaliação da função f (x, y, z) em passos 
+om apenas uma operação
+
+aritméti
+a a 
+ada passo;
+
+(b) Usando a de
+omposição anterior, 
+al
+ule f (2, 3, 5).
+
+(
+) Agora 
+al
+ule as três derivadas par
+iais ∂f /∂x, ∂f /∂y e ∂f /∂z no ponto (2, 3, 5).
+
+Se vo
+ê preferir usar diferen
+iação progressiva, terá que usar um vetor. Se preferir
+
+a regressiva, será mais e
+onmi
+o mas pre
+isa ter mais 
+uidado nas operações para
+
+não 
+ometer erros. De qualquer maneira, 
+on(cid:28)ra o resultado!!
+
+3 Sistemas dinâmi
+os
+
+1. Vo
+ê tem uma função f (x) e também 
+onhe
+e a derivada dela, 
+omo por exemplo f (x) =
+
+cos(x) e portanto df /dx =
+
+−
+
+sin(x). Agora 
+umpra as tarefas:
+
+9
+
+(a) Se vo
+ê tem f (x), então pode es
+rever um programinha para fazer uma lista de
+valores de f (x) para x entre 0 e 5, por exemplo. Es
+olha um valor ∆x e avalie a
+função em f (0), f (∆x), f (2∆x), f (3∆x), . . . , f (5).
+
+(b) Se vo
+ê tem df /dx, então pode fazer uma aproximação para f (x) :
+
+f (x + ∆x)
+
+≈
+
+f (x) + df /dx(x)
+
+∆x
+
+∗
+
+Use o mesmo valor ∆x do item anterior e avalie a função em f (0), f (∆x), f (2∆x),
+f (3∆x), . . . , f (5).
+
+(
+) Agora plote os dois 
+onjuntos de resultados para ver 
+omo se 
+omportam a função
+
+verdadeira e a aproximação.
+
+(d) Repita o exer
+í
+io 
+om alguma outra função.
+
+2. Vo
+ê tem N0 átomos de uma substân
+ia radioativa, mas sabe que um átomo sofre de
+aimento a 
+ada τ unidades de tempo, em média. As leis da físi
+a dizem que o número de
+átomos N(t) ao longo do tempo segue a expressão
+
+N(t) = N0
+
+e−t/τ .
+
+∗
+
+Sabendo disso, es
+reva um programa que re
+ebe os valores de N0 e τ e depois 
+al
+ula a
+
+quantidade de átomos a 
+ada instante, até um tempo determinado.
+
+Agora 
+ompare esse resultado exato 
+om a aproximação abaixo, usando o método de Euler
+
+para aproximar os valores e 
+ompare os dois 
+onjuntos de resultados:
+
+N(t + ∆t)
+
+N(t)
+
+−
+
+≈
+
+τ N(t)∆t.
+
+3. Vo
+ê tem um pêndulo de 
+omprimento L onde está pendurado um peso qualquer. O
+pêndulo está os
+ilando 
+om um ângulo θ(t) e uma velo
+idade angular ω(t) e sabemos que
+as funções θ e ω seguem as aproximações abaixo:
+
+θ(t + ∆t)
+ω(t + ∆t)
+
+θ(t) + ∆t
+∆t
+ω(t)
+
+ω(t)
+(g/L
+
+∗
+∗
+
+≈
+≈
+
+sin θ(t))
+
+−
+onde g é a a
+eleração da gravidade. Es
+reva um programa que re
+ebe os valores de θ(0)
+e ω(0), um valor para ∆t e depois usa o método de Euler para 
+al
+ular as posições x e y
+do pêndulo a 
+ada instante, até um tempo determinado. Os valores de x e y são obtidos
+a partir do ângulo θ(t):
+
+∗
+
+x(t) = L sin(θ(t))
+y(t) = L
+
+(1
+
+∗
+
+−
+
+cos(θ(t)))
+
+10
+
