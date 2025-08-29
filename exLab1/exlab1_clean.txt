@@ -1,3 +1,4 @@
+
 Métodos Numéricos
 Exercícios
 Solução de equações
