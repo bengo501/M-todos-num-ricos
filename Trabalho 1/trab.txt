@@ -1,0 +1,128 @@
+Métodos Numéricos
+
+Trabalho II
+
+Prof. João B. Oliveira
+
+Seu trabalho nesta disciplina consiste em realizar um estudo secreto para um estúdio coreano que está planejando um novo seriado muito vidiante e inovador: pessoas aleatórias que precisam de dinheiro são convidadas a participar de um jogo onde coisas ruins podem acontecer com elas.
+
+Elas devem ir para um prédio misterioso com n salas conectadas uma com a outra, como nos exemplos abaixo (de três prédios diferentes sendo pensados como cenário):
+
+O simulador de jogo só depende do número n de salas
+
+e as regras são estas:
+
+• O número n de salas do cenário é sempre ímpar;
+
+• Os personagens são sempre largados na sala ⌊(n + 1)/2⌋;
+
+• A cada episódio os personagens têm probabilidade 1/n de continuar na mesma sala (e portanto têm probabilidade (n−1)/n de se mover para as salas dos lados.)
+
+• Se o personagem estiver em uma das salas de 2 até n − 1, ele tem probabilidade (n − 1)/2 de ir para a sala que vem antes e a mesma probabilidade de ir para a que vem depois. Nas salas de 2 a n acontecem coisas interessantes, mas os personagens não chegam a sair do jogo.
+
+• As salas das pontas (casas 1 e n) não têm vizinhas em um dos lados, mas os personagens têm probabilidade (n − 1)/2 de morrer tragicamente e sair do seriado.
+
+O estúdio entende que os personagens largados irão circular pelas salas ao acaso, indo para um lado e para o outro e gerando um seriado potencialmente infinito, com audiência garantida, uma espécie de BBB com mortes nas pontas. O que eles não têm certeza é de quantos atores serão necessários para ficar andando pra lá e pra cá, pois isso vai mudar com o número de salas no cenário.
+
+Sua missão é construir um programa que seja capaz de receber n pela linha de comando e possa responder a pergunta: quantas pessoas (no total) devem estar nas salas quando o jogo for estabilizado? Então, espera-se que seu simulador rode mais ou menos assim:
+
+> java simulador 23 // 23 salas
+
+População para 23 salas: 1234 atores // 1234 parece meio aleatório...
+
+Ah, sim. Você não pode simular o movimento de pessoas entre as salas. A única alternativa que é aceita para resolver o problema é através de um sistema linear! E para garantir que seu programa pode ser rodado em qualquer estúdio coreano ele deve ser feito em Java, C, Python ou C++. Os estúdios coreanos gostam bastante de C e C++.
+
+(Fim do texto transcrito.)
+
+---
+
+1) O que o trabalho pede — explicação curta
+
+O enunciado pede que você calcule a população total estacionária no conjunto de n salas (n ímpar), sob as regras de transição indicadas, sem fazer simulação estocástica direta. Em vez disso, você deve formular e resolver um sistema linear que representa o estado estacionário (equilíbrio) do fluxo de atores entre salas, considerando também as saídas (morte) nas extremidades. O programa deve receber n na linha de comando e devolver a população estacionária total (ou a distribuição por sala).
+
+---
+
+2) Conexões e como formular matematicamente (passo a passo)
+
+- Modele as salas como estados 1,2,...,n.
+- Em cada “passo” (episódio) um ator em uma sala tem probabilidade s = 1/n de ficar na mesma sala (stay), e probabilidade 1-s = (n-1)/n de tentar mover-se para as salas laterais.
+- Se houver duas vizinhas (salas internas 2..n-1), divide-se igualmente entre a esquerda e a direita: cada vizinha recebe (1-s)/2 = (n-1)/(2n).
+- Nas pontas (1 e n) há apenas uma vizinha: a parte da probabilidade que iria para o lado “fora do tabuleiro” deve ser interpretada como saída do sistema (morte).
+
+Entrada contínua / taxa de chegada
+O enunciado sugere que atores continuam sendo “largados” no centro (sala m=floor((n+1)/2)). Para ter um regime estacionário com número médio constante de atores, é natural assumir uma taxa de chegada lambda (por passo) de novos atores na sala central. Uma escolha simples é lambda=1 ator por passo (você pode ajustar).
+
+Equações de balanço (sistema linear)
+Seja x_i a população média estacionária (número esperado de atores) presente na sala i. No equilíbrio:
+
+x = P^T x + b
+
+Rearranjo: (I - P^T)x = b.
+
+Então: x = (I-P^T)^{-1} b.
+
+A população total estacionária é X_total = sum_i x_i.
+
+---
+
+3) Exemplo de implementação em Python
+
+import numpy as np
+
+def make_transition_matrix(n):
+    s = 1.0 / n
+    move_total = 1.0 - s
+    P = np.zeros((n,n))
+    for i in range(n):
+        P[i,i] = s
+        neighbors = []
+        if i-1 >= 0:
+            neighbors.append(i-1)
+        if i+1 < n:
+            neighbors.append(i+1)
+        if len(neighbors) > 0:
+            per_neighbor = move_total / len(neighbors)
+            for j in neighbors:
+                P[i,j] = per_neighbor
+    return P
+
+def stationary_expected_counts(n, arrival_rate=1.0):
+    P = make_transition_matrix(n)
+    I = np.eye(n)
+    A = I - P.T
+    b = np.zeros(n)
+    center = (n+1)//2 - 1
+    b[center] = arrival_rate
+    x = np.linalg.solve(A, b)
+    return x
+
+if __name__ == "__main__":
+    for n in [3,5,7,23]:
+        x = stationary_expected_counts(n, arrival_rate=1.0)
+        print(f"n={n}, total expected population = {x.sum():.6f}")
+        print("distribution:", np.round(x,4))
+
+---
+
+4) Como isso liga à Álgebra Linear e Probabilidade
+
+- Montamos um sistema linear (I-P^T)x=b. Resolver este sistema é aplicação direta de métodos numéricos.
+- P é matriz de transição de uma cadeia de Markov com absorção. A equação de equilíbrio aqui é análoga às equações de estado estacionário.
+- A invertibilidade de I-P^T e propriedades numéricas dependem de n e das probabilidades.
+
+---
+
+5) Incertezas e suposições
+
+Algumas passagens do PDF estavam corrompidas. Segui a interpretação natural:
+- stay = 1/n;
+- mover = (n-1)/n dividido igualmente entre vizinhas;
+- movimento fora das pontas é saída do sistema.
+
+---
+
+6) Próximos passos
+
+- Versão em Java/C/C++ pronta;
+- Variar o modelo (diferentes taxas de chegada);
+- Rodar o código e calcular valores numéricos para n específico.
