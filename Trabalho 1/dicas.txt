@@ -1,0 +1,9 @@
+️Importante:
+O número de salas deve ser ímpar (3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, etc.)
+Se você tentar usar um número par, o programa mostrará um erro
+O programa mostra detalhes da matriz de transição e a distribuição final da população
+O que o programa faz:
+Cria a matriz de transição baseada nas regras do jogo
+Resolve o sistema linear (I - P^T)x = b
+Mostra a população estacionária em cada sala
+Calcula a população total necessária para manter o jogo funcionando

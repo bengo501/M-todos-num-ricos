@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <cmath>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
