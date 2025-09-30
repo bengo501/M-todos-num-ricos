@@ -1,3 +1,16 @@
+// Trabalho 1 - Simulador de Jogo Coreano
+// Bernardo Klein Heitz 
+// Lucas Langer Lantmann
+
+//# para compilar:
+//      g++ -o simulador simulador_jogo.cpp
+
+//# executar com diferentes numeros de salas (sempre numeros inteiros impares!)
+//      ./simulador 3
+//      ./simulador 5
+//      ./simulador 7
+//      ./simulador 23
+
 #include <iostream> // biblioteca para entrada e saída de dados
 #include <vector> // uso de vetores
 #include <iomanip> // formatação de saída
@@ -6,19 +19,22 @@
 
 using namespace std; 
 
+
 class SimuladorJogo { // classe para simular o jogo
-private: // variáveis privadas
-    int n;  // número de salas
+
+private: 
+    int n;  // numero de salas
     vector<vector<double>> P;  // matriz de transição
     vector<double> x;  // populacao por sala
+
 
     void criarMatrizTransicao() { // função para criar a matriz de transição
         cout << "\n======CRIANDO MATRIZ DE TRANSICAO PARA " << n << " SALAS======\n";
         
-        double prob_ficar = 1.0 / n;
-        double prob_mover = 1.0 - prob_ficar;
+        double prob_ficar = 1.0 / n; // prob de ficar na mesma sala
+        double prob_mover = 1.0 - prob_ficar; // prob de mover para uma sala vizinha
         
-        cout << fixed << setprecision(4);
+        cout << fixed << setprecision(4); // formata a saida para 4 casas decimais
         cout << "prob de ficar na mesma sala: " << prob_ficar << "\n";
         cout << "prob total de movimento: " << prob_mover << "\n";
         
@@ -29,9 +45,9 @@ private: // variáveis privadas
             int sala_atual = i + 1; // indice da sala atual
             cout << "\nsala " << sala_atual << ":\n"; // mostra a sala atual
             
-            // Probabilidade de ficar na mesma sala
+            // prob de ficar na mesma sala
             P[i][i] = prob_ficar;
-            cout << " ficar na sala " << sala_atual << ": " << prob_ficar << "\n"; // mostra a probabilidade de ficar na sala atual
+            cout << " ficar na sala " << sala_atual << ": " << prob_ficar << "\n"; // mostra a prob de ficar na sala atual
             
             // Identificar salas vizinhas
             vector<int> vizinhas;
@@ -45,19 +61,19 @@ private: // variáveis privadas
             }
             cout << "]\n"; 
             
-            // Distribuir probabilidade de movimento
+            // Distribuir prob de movimento
             if (!vizinhas.empty()) { // se a sala tiver vizinhas
                 double prob_por_vizinha; 
                 double prob_morte = 0.0;
                 
-                if (vizinhas.size() == 1) {  // Sala da ponta
-                    prob_por_vizinha = prob_mover / 2.0; // probabilidade de mover para a vizinha
-                    prob_morte = prob_mover / 2.0; // probabilidade de morrer
-                    cout << "  prob para vizinha: " << prob_por_vizinha << "\n"; // mostra a probabilidade de mover para a vizinha
-                    cout << "  prob de morte: " << prob_morte << "\n"; // mostra a probabilidade de morrer
+                if (vizinhas.size() == 1) {  // sala da ponta
+                    prob_por_vizinha = prob_mover / 2.0; // prob de mover para a vizinha
+                    prob_morte = prob_mover / 2.0; // prob de morrer
+                    cout << "  prob para vizinha: " << prob_por_vizinha << "\n"; // mostra a prob de mover para a vizinha
+                    cout << "  prob de morte: " << prob_morte << "\n"; // mostra a prob de morrer
                 } else {  // Sala interna
-                    prob_por_vizinha = prob_mover / 2.0; // probabilidade de mover para a vizinha
-                    cout << "  prob por vizinha: " << prob_por_vizinha << "\n"; // mostra a probabilidade de mover para a vizinha
+                    prob_por_vizinha = prob_mover / 2.0; // prob de mover para a vizinha
+                    cout << "  prob por vizinha: " << prob_por_vizinha << "\n"; // mostra a prob de mover para a vizinha
                 }
                 
                 for (int j : vizinhas) { // percorre as salas vizinhas
@@ -72,6 +88,7 @@ private: // variáveis privadas
         }
     }
     
+
     void resolverSistemaLinear() { // funcao para resolver o sistema linear (Ax = b)
         cout << "\n=====RESOLVENDO SISTEMA LINEAR=====\n";
         
@@ -96,7 +113,7 @@ private: // variáveis privadas
     
     vector<double> resolverGaussiana(vector<vector<double>> A, vector<double> b) { // funcao para resolver o sistema linear
         int n = A.size(); // tamanho da matriz A
-        
+    
         // eliminacao para frente
         for (int i = 0; i < n; i++) {
             // encontrar pivô
@@ -144,6 +161,7 @@ private: // variáveis privadas
         return x; // retorna o vetor x (solucao do sistema linear)
     }
 
+
 public: 
     SimuladorJogo(int num_salas) : n(num_salas) { // construtor da classe SimuladorJogo (parametro num_salas) 
         if (n <= 0 || n % 2 == 0) { // se o numero de salas for menor ou igual a 0 ou for par
@@ -166,6 +184,7 @@ public:
         }
     }
     
+
     void mostrarResultados() { // funcao para mostrar os resultados
         cout << "\n===RESULT FINAL=== :\n";
         
@@ -204,6 +223,7 @@ public:
              << (min_it - x.begin() + 1) << " (" << *min_it << ")\n";
     }
 };
+
 
 int main(int argc, char* argv[]) { // funcao principal (argc = numero de argumentos, argv = vetor de argumentos)
     if (argc != 2) { // se o numero de argumentos for diferente de 2
