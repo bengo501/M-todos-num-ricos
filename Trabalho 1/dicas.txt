@@ -7,3 +7,15 @@ Cria a matriz de transição baseada nas regras do jogo
 Resolve o sistema linear (I - P^T)x = b
 Mostra a população estacionária em cada sala
 Calcula a população total necessária para manter o jogo funcionando
+
+# Navegar para o diretório
+cd "Trabalho 1"
+
+# Compilar (se necessário)
+g++ -o simulador simulador_jogo.cpp
+
+# Executar com diferentes números de salas
+./simulador 3
+./simulador 5
+./simulador 7
+./simulador 23
