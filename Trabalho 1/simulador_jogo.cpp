@@ -10,6 +10,8 @@
 //      ./simulador 5
 //      ./simulador 7
 //      ./simulador 23
+//  ou  simulador.exe 3
+
 
 #include <iostream> // biblioteca para entrada e saída de dados
 #include <vector> // uso de vetores
