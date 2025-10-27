@@ -88,6 +88,11 @@ Nossa interpolação polinomial considera todos os 4 pontos, resultando em **178
 
 ### 3.1 Experiência de Extrair Informação do ChatGPT
 
+Para verificar nosso resultado, consultamos o ChatGPT fornecendo os seguintes dados:
+
+**Prompt utilizado:**
+"Tenho uma tabela com tempo de cozimento de peru: 3.0 kg = 83 min, 5.0 kg = 146 min, 7.0 kg = 197 min, 9.0 kg = 243 min. Preciso calcular o tempo para um peru de 6.22 kg usando interpolação polinomial."
+
 A experiência de consultar o ChatGPT sobre este problema foi interessante e reveladora. Após fornecer os dados da tabela e solicitar o cálculo de t(6.22), o ChatGPT:
 
 1. **Identificou corretamente** que seria necessário usar interpolação polinomial
