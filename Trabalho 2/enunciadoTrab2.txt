@@ -1,0 +1,25 @@
+Métodos Numéricos
+Trabalho III
+Prof. João B. Oliveira
+
+A chegada do Natal é sempre uma época de alegria, exceto para Dona Selma, que sempre tem dúvidas sobre o tempo que vai ser necessário para assar o peru. A cada ano o peru tem um peso um pouquinho diferente, o dia está mais quente ou mais frio, a festa inicia mais cedo ou mais tarde. São muitas dúvidas. Felizmente Dona Selma consultou alguns livros na biblioteca e eles são capazes de fornecer informações sobre o assunto. Em um deles ela encontra uma tabela com alguns tempos que servem como referência! De acordo com o peso do peru (em kg) os livros indicam o tempo para assar a 230 C de temperatura.
+
+(3.0 kg) = 1 h 23 min
+(5.0 kg) = 2 h 26 min
+(7.0 kg) = 3 h 17 min
+(9.0 kg) = 4 h 03 min
+
+O peru deste ano pesa exatamente 6.22 kg, e Dona Selma pede sua ajuda para achar o tempo exato para que ele seja assado afinal a tabela não tem muitos dados. Ela também é muito ligada nas tendências tecnológicas e acha que a IA poderia ajudar. Ela pede que você use alguma IA pra checar o valor obtido, usando esta moderna e sofisticada ferramenta para ajudar você a descobrir o valor de t(6.22).
+
+Como o Natal depende do sucesso da sua tarefa, Dona Selma pede um relatório com três partes:
+
+Obter o seu resultado usando interpolação de Newton ou Lagrange;
+
+Obter um resultado para t(6.22) através do ChatGPT e comparar com o seu, avaliando se ele é adequado ou não é;
+
+Entregar um relatório de cerca de 2–3 páginas dando detalhes:
+(a) Como foi a experiência de extrair informação do ChatGPT;
+(b) Como você obteve seu resultado;
+(c) Como foi a comparação e suas conclusões.
+
+Lembre que o Natal depende de detalhes como estes para ser inesquecível!
