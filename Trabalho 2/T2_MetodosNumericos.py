@@ -27,7 +27,7 @@ def metodoNewton(x, y, pontoDesejado):#x e y são os pesos e tempos, pontoDeseja
 
 # resultado do metodo de lagrange e newton
 resultadoLagrange, resultadoNewton = metodoLagrange(pesos, tempos, pesoDoPeru), metodoNewton(pesos, tempos, pesoDoPeru) 
-# resultadoLagrange é dividido por 60 para obter as horas e o resto para os minutos
+#resultadoLagrange dividido por 60 para obter as horas e o resto para os minutos
 horas, minutos = int(resultadoLagrange // 60), int(resultadoLagrange % 60) 
 
 print(" ================================================ ")

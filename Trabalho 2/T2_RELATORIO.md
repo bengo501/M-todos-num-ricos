@@ -1,20 +1,18 @@
 # Métodos Numéricos - Trabalho 2
 
-## Interpolação para Tempo de Assar Peru
-
-**Aluno:** [Seu Nome]
-**Professor:** João B. Oliveira
-**Data:** [Data atual]
+Aluno: Bernardo Klein Heitz
+Professor: João B. Oliveira
+Data: 04/11/2025
 
 ## 1. Resultado
 
-Sobre o tempo necessário para assar um peru de 6.22 kg a 230°C, utilizando métodos de interpolação polinomial. O resultado obtido foi **t(6.22) = 178.09 minutos (2h 58min)**.
+Para assar um peru de 6.22 kg a 230°C, utilizando métodos de interpolação polinomial,o resultado obtido foi t(6.22) = 178.09 minutos (2h 58min).
 
 ## 2. Obtenção do Resultado usando Interpolação
 
 ### 2.1 Dados do Problema
 
-Dona Selma possui uma tabela de referência com os seguintes dados:
+Tabela de referência:
 
 | Peso (kg) | Tempo de Cozimento | Tempo (minutos) |
 | --------- | ------------------ | --------------- |
@@ -23,189 +21,188 @@ Dona Selma possui uma tabela de referência com os seguintes dados:
 | 7.0       | 3h 17min           | 197             |
 | 9.0       | 4h 03min           | 243             |
 
-**Objetivo:** Determinar o tempo para assar um peru de **6.22 kg**.
+Devesse determinar o tempo para assar um peru de 6.22 kg.
 
 ### 2.2 Método Utilizado: Interpolação de Lagrange
 
 A interpolação de Lagrange foi escolhida por ser um método direto e eficiente para este problema. Com 4 pontos conhecidos, construímos um polinômio de grau 3 que passa exatamente por todos os pontos dados.
 
-#### Fórmula de Lagrange:
-
-Para n+1 pontos $(x_i, y_i)$, o polinômio interpolador de Lagrange é:
-
-$$
-L(x) = \sum_{i=0}^{n} y_i \cdot L_i(x)
-$$
-
-onde:
-
-$$
-L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{n} \frac{x - x_j}{x_i - x_j}
-$$
-
 #### Implementação:
 
-Para nosso caso:
+Para o caso:
 
-- $x = [3.0, 5.0, 7.0, 9.0]$ (pesos em kg)
-- $y = [83, 146, 197, 243]$ (tempos em minutos)
-- Ponto a interpolar: $x = 6.22$ kg
+Ponto a interpolar: x = 6.22 kg
+
+Pesos (x): [3.0, 5.0, 7.0, 9.0]
+
+Tempos (y): [83, 146, 197, 243]
 
 ### 2.3 Resultado Obtido
 
-Utilizando interpolação de Lagrange, obtivemos:
+Utilizando interpolação de Lagrange:
 
-**t(6.22) = 178.09 minutos = 2h 58min**
+t(6.22) = 178.09 minutos = 2h 58min
 
 #### Verificação:
 
 Os cálculos foram verificados testando o polinômio interpolador nos pontos conhecidos:
 
-- P(3.0) = 83.00 min ✓
-- P(5.0) = 146.00 min ✓
-- P(7.0) = 197.00 min ✓
-- P(9.0) = 243.00 min ✓
+P(3.0) = 83.00 min
 
-Todos os pontos conhecidos foram reproduzidos com erro de aproximadamente 0, confirmando a correção da implementação.
+P(5.0) = 146.00 min
 
-### 2.4 Interpolação de Newton (Validação)
+P(7.0) = 197.00 min
 
-Para validar o resultado, também implementamos a interpolação de Newton usando diferenças divididas. O resultado foi idêntico:
+P(9.0) = 243.00 min
 
-**Newton: t(6.22) = 178.09 minutos**
+Todos os valores foram reproduzidos com mínimo erro numérico, o que validou a implementação.
 
-Isso confirma que o resultado é correto, pois ambos os métodos (Lagrange e Newton) devem produzir o mesmo polinômio interpolador para um conjunto dado de pontos.
+### 2.4 Interpolação de Newton
+
+    Para validar o resultado, também foi implementado a interpolação de Newton usando diferenças divididas. O resultado foi idêntico:
+
+Newton: t(6.22) = 178.09 minutos
+
+    Dessa forma, é possível confirmar que o resultado está correto, pois os dois métodos devem produzir o mesmo polinômio interpolador para um conjunto dado de pontos.
 
 ### 2.5 Análise do Resultado
 
-O ponto 6.22 kg está localizado entre 5.0 kg e 7.0 kg, o que caracteriza uma **interpolação** (não extrapolação).
+    O ponto 6.22 kg está localizado entre 5.0 kg e 7.0 kg. Uma interpolação linear simples entre esses dois pontos daria:
 
-Uma interpolação linear simples entre esses dois pontos daria:
+tlinear≈177,1 minutos
 
-$$
-t_{linear} = 146 + \frac{197-146}{7.0-5.0} \times (6.22-5.0) \approx 177.1 \text{ minutos}
-$$
+    Essa interpolação polinomial considera todos os 4 pontos, resultando em 178.09 minutos. Desse jeito, considera a curvatura da função em todos os pontos o que o torna teoricamente mais preciso.
 
-Nossa interpolação polinomial considera todos os 4 pontos, resultando em **178.09 minutos**, proporcionando uma estimativa mais precisa que considera a curvatura da função em todos os pontos.
-
-## 3. Comparação com ChatGPT
-
-### 3.1 Experiência de Extrair Informação do ChatGPT
-
-Para verificar nosso resultado, consultamos o ChatGPT fornecendo os seguintes dados:
-
-**Prompt utilizado:**
-"Tenho uma tabela com tempo de cozimento de peru: 3.0 kg = 83 min, 5.0 kg = 146 min, 7.0 kg = 197 min, 9.0 kg = 243 min. Preciso calcular o tempo para um peru de 6.22 kg usando interpolação polinomial."
-
-A experiência de consultar o ChatGPT sobre este problema foi interessante e reveladora. Após fornecer os dados da tabela e solicitar o cálculo de t(6.22), o ChatGPT:
-
-1. **Identificou corretamente** que seria necessário usar interpolação polinomial
-2. **Sugeriu** o uso de interpolação de Lagrange ou Newton
-3. **Calculou** o resultado utilizando interpolação de Lagrange
-4. **Apresentou** o resultado: aproximadamente **178 minutos (2h 58min)**
-
-#### Pontos Positivos:
-
-- O ChatGPT demonstrou conhecimento sobre métodos de interpolação
-- Forneceu uma explicação clara do método utilizado
-- Apresentou o código Python para calcular
-- O resultado foi coerente com nossos cálculos
-
-#### Limitações Observadas:
-
-- O ChatGPT não forneceu os cálculos passo a passo detalhados
-- Não indicou explicitamente o polinômio interpolador completo
-- Não mencionou a verificação do resultado nos pontos conhecidos
-
-### 3.2 Resultado do ChatGPT
-
-O ChatGPT forneceu o resultado: **t(6.22) ≈ 178 minutos (2h 58min)**
-
-### 3.3 Comparação com Nossos Resultados
-
-| Método                        | Resultado      | Diferença |
-| ------------------------------ | -------------- | ---------- |
-| **Nossa Interpolação** | 178.09 minutos | -          |
-| **ChatGPT**              | ~178 minutos   | ~0.09 min  |
-
-A diferença é **mínima e desprezível** na prática (~5 segundos), o que indica que ambos os métodos produziram resultados adequados e corretos.
-
-## 4. Análise e Conclusões
-
-### 4.1 Avaliação da Adequação do Resultado
+## 3. Avaliação da Adequação do Resultado
 
 #### (a) Experiência com ChatGPT
 
-A experiência de usar o ChatGPT como ferramenta de verificação foi positiva. O ChatGPT conseguiu:
+Para verificar o resultado com o ChatGPT, forneci os seguintes dados:
 
-- Entender o problema rapidamente
-- Aplicar o método de interpolação correto
-- Fornecer um resultado muito próximo ao nosso
+Prompt utilizado:
+"Tenho uma tabela com tempo de cozimento de peru: 3.0 kg = 83 min, 5.0 kg = 146 min, 7.0 kg = 197 min, 9.0 kg = 243 min. Preciso calcular o tempo para um peru de 6.22 kg usando interpolação polinomial."
 
-No entanto, é importante notar que o ChatGPT funcionou mais como uma "calculadora avançada" do que como uma ferramenta educacional completa. Ele não explicou detalhadamente cada passo do processo, o que é fundamental para o aprendizado.
+A experiência de usar o ChatGPT como ferramenta de verificação foi muito positiva. O ChatGPT conseguiu:
+
+Entender o problema rapidamente.
+
+Aplicar corretamente o método de interpolação polinomial.
+
+Fornecer o polinômio interpolador completo.
+
+Encontrar um resultado igual ao encontrado com a implementação: 178.09 minutos
+
+**Obervações positivas:**
+
+    O ChatGPT foi muito eficiente e preciso. Ele forneceu o resultado e mostrou o polinômio interpolador completo:
+
+P(x)=0.14583333x3−3.68750000x2+53.85416667x−49.31250000.
+
+    E avaliou P(6.22) = 178.09 isso permitiu verificar que ele realmente calculou o polinômio de grau 3 que passa pelos 4 pontos dados.
+
+**Limitações observadas:**
+
+    Embora o gpt tenha sido muito bom, ele não forneceu os cálculos passo a passo detalhados, como as diferenças divididas no método de Newton ou a construção dos polinômios base de Lagrange. Ele apenas focou no resultado.
 
 #### (b) Como Obtivemos Nosso Resultado
 
-Nosso resultado foi obtido através de:
+O resultado da implementação foi obtido:
 
-1. **Implementação manual** da interpolação de Lagrange em Python
-2. **Implementação** da interpolação de Newton para validação
-3. **Verificação** do polinômio interpolador nos pontos conhecidos
-4. **Análise** da localização do ponto (interpolação vs extrapolação)
+**1. Implementação manual da interpolação de Lagrange em Python:**
 
-Este processo nos permitiu:
+    Utilizamos a fórmula de Lagrange para construir um polinômio de grau 3 que passa pelos 4 pontos conhecidos (3.0, 83), (5.0, 146), (7.0, 197), (9.0, 243).
 
-- Entender profundamente o método matemático
-- Verificar cada etapa do cálculo
-- Confirmar a correção através de múltiplos métodos
+    A implementação funciona da seguinte forma: para cada ponto$i$ (onde $i = 0, 1, 2, 3$), calculamos o polinômio base de Lagrange $L_i(x)$ usando a fórmula:
+
+$$
+L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{3} \frac{x - x_j}{x_i - x_j}
+$$
+
+Por exemplo, para $i = 0$ (ponto $x_0 = 3.0$), calculamos:
+
+$$
+L_0(x) = \frac{(x - 5.0)(x - 7.0)(x - 9.0)}{(3.0 - 5.0)(3.0 - 7.0)(3.0 - 9.0)}
+$$
+
+O polinômio interpolador completo é então construído como:
+
+$$
+L(x) = \sum_{i=0}^{3} y_i \cdot L_i(x) = 83 \cdot L_0(x) + 146 \cdot L_1(x) + 197 \cdot L_2(x) + 243 \cdot L_3(x)
+$$
+
+    A implementação em Python utiliza dois loops aninhados: o loop externo percorre todos os pontos$i$, e o loop interno calcula o produto dos termos $(x - x_j)/(x_i - x_j)$ para todos os $j \neq i$. Em seguida, multiplicamos cada $L_i(x)$ pelo valor correspondente $y_i$ e somamos todos os termos para obter o valor final do polinômio no ponto desejado $x = 6.22$ kg.
+
+**2. Implementação da interpolação de Newton para validação:**
+
+    Para confirmar o resultado, implementamos também o método de Newton usando diferenças divididas. Este método é baseado na construção de uma tabela de diferenças divididas, que é mais eficiente computacionalmente que Lagrange para adicionar novos pontos.
+
+**O processo funciona da seguinte forma:**
+
+Primeiro, construímos a tabela de diferenças divididas $F[i, j]$:
+
+A primeira coluna ($j = 0$) contém os valores conhecidos: $F[i, 0] = y_i$ para $i = 0, 1, 2, 3$
+
+As colunas subsequentes são calculadas usando a fórmula recursiva:
+
+$$
+F[i, j] = \frac{F[i+1, j-1] - F[i, j-1]}{x_{i+j} - x_i}
+$$
+
+Por exemplo:
+
+Primeira diferença dividida: $F[0, 1] = \frac{F[1, 0] - F[0, 0]}{x_1 - x_0} = \frac{146 - 83}{5.0 - 3.0} = 31.5$
+
+Segunda diferença dividida: $F[0, 2] = \frac{F[1, 1] - F[0, 1]}{x_2 - x_0}$
+
+Até completar a tabela...
+
+O polinômio interpolador de Newton é construído usando os coeficientes da primeira linha da tabela:
+
+$$
+N(x) = F[0, 0] + F[0, 1](x - x_0) + F[0, 2](x - x_0)(x - x_1) + F[0, 3](x - x_0)(x - x_1)(x - x_2)
+$$
+
+    Avaliando este polinômio no ponto$x = 6.22$ kg, obtivemos o resultado: 178.09 minutos. O fato de que ambos os métodos (Lagrange e Newton) produziram exatamente o mesmo resultado confirma que a implementação está correta, pois ambos devem gerar o mesmo polinômio interpolador único de grau 3 que passa pelos 4 pontos dados.
+
+**3. Verificação do polinômio interpolador nos pontos conhecidos:**
+
+Testamos o polinômio interpolador calculado em todos os pontos conhecidos da tabela:
+
+P(3.0) = 83.00 min  	P(5.0) = 146.00 min	 P(7.0) = 197.00 min 	P(9.0) = 243.00 min
+
+    Todos os valores foram reproduzidos com erro numérico mínimo (praticamente zero), validando que a implementação está correta.
+
+**4. Análise da localização do ponto:**
+
+    Verificamos que o ponto 6.22 kg está localizado entre 5.0 kg e 7.0 kg, caracterizando umainterpolação (não extrapolação), o que garante maior confiabilidade do resultado, pois o ponto está dentro do intervalo dos dados conhecidos.
 
 #### (c) Comparação e Conclusões
 
-**Conclusão sobre a Adequação:**
+**Comparação dos Resultados:**
 
-Ambos os resultados (nosso e do ChatGPT) são **adequadamente corretos** e apropriados para o problema. A pequena diferença de ~0.09 minutos é desprezível na prática, especialmente considerando que:
-
-1. O problema envolve interpolação de dados culinários, onde pequenas variações são aceitáveis
-2. O ponto interpolado (6.22 kg) está bem posicionado entre os pontos conhecidos
-3. A interpolação polinomial é adequada para este tipo de problema suave e contínuo
+| Método                     | Resultado      | Diferença |
+| --------------------------- | -------------- | ---------- |
+| Interpolação implementada | 178.09 minutos | -          |
+| ChatGPT                     | 178.09 minutos | 0.00 min   |
 
 **Observações Importantes:**
 
-1. **Validação:** A concordância entre nosso resultado e o do ChatGPT confirma a correção da implementação
-2. **Método Apropriado:** A interpolação polinomial foi a escolha correta, pois:
+**Validação Perfeita:** A concordância **exata** (diferença zero) entre nosso resultado e o do ChatGPT confirma definitivamente a correção da implementação
 
-   - O ponto está dentro do intervalo dos dados conhecidos
-   - A função parece ser suave e contínua
-   - Não há indicação de comportamento não-polinomial
-3. **Limitações da Interpolação:** Embora o resultado seja adequado, devemos considerar:
+**Método Apropriado:** A interpolação polinomial foi a escolha correta, pois:
 
-   - Interpolação polinomial pode oscilar se os dados tiverem ruído
-   - O resultado é uma estimativa baseada em 4 pontos apenas
-   - Em culinária, outros fatores (temperatura ambiente, tipo de forno) podem influenciar
-4. **ChatGPT como Ferramenta:** O ChatGPT mostrou-se útil como ferramenta de verificação rápida, mas:
+O ponto está dentro do intervalo dos dados conhecidos
 
-   - Não substitui o entendimento profundo dos métodos
-   - Deve ser usado com cautela e sempre verificando os resultados
-   - É excelente para conferência, mas não para aprendizado inicia
+A função parece ser suave e contínua
 
-## 6. Conclusão
+Não há indicação de comportamento não-polinomial
 
-Este trabalho demonstrou a aplicação prática de métodos de interpolação numérica para resolver um problema real. Através da interpolação de Lagrange e Newton, conseguimos estimar com precisão o tempo necessário para assar um peru de peso intermediário aos dados conhecidos.
+## 4. Conclusão
 
-A comparação com o ChatGPT validou nossos resultados e mostrou que ferramentas de IA podem ser úteis para verificação, mas o entendimento matemático profundo continua sendo essencial para resolver problemas de métodos numéricos.
+    Este trabalho demonstrou a aplicação prática de métodos de interpolação numérica para resolver um problema real. Através da interpolação de Lagrange e Newton, conseguimos estimar com precisão o tempo necessário para assar um peru de peso intermediário aos dados conhecidos.
 
-**Resultado Final:** Para um peru de 6.22 kg, o tempo de cozimento é de **2h 58min (178.09 minutos)** a 230°C.
+    A comparação com o ChatGPT validou nossos resultados de forma perfeita - ambos os métodos produziram resultadosidênticos (178.09 minutos), confirmando definitivamente a correção de nossa implementação. O ChatGPT também forneceu o polinômio interpolador completo, permitindo verificar que ele realmente calculou o polinômio de grau 3 correto. Isso mostra que ferramentas de IA podem ser muito útesis para verificação, mas o entendimento matemático profundo continua sendo essencial para resolver problemas de métodos numéricos.
 
-### Código Python:
+Resultado Final:
 
-O código completo está disponível em `interpolacao_peru_simples.py`.
-
-### Dados Utilizados:
-
-Pesos: [3.0, 5.0, 7.0, 9.0] kg
-
-Tempos: [83, 146, 197, 243] minutos
-
-Ponto interpolado: 6.22 kg
-
-Resultado: 178.09 minutos
+    Para um peru de 6.22 kg, o tempo de cozimento é de 2h 58min (178.09 minutos) a 230°C.
