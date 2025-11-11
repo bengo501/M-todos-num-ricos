@@ -5,7 +5,7 @@ pesoDoPeru = 6.22#em kg
 def metodoLagrange(x, y, pontoDesejado): 
     tamanho, resultado = len(x), 0.0 #   tamanho (numero de pontos) resultado (resultado do metodo de lagrange)
     for i in range(tamanho):            
-        polinomioBase = 1.0              # polinomioBase é o produto dos polinomios de lagrange
+        polinomioBase = 1.0              # polinomioBase (produto dos polinomios de lagrange)
         for j in range(tamanho):
             if i != j:   
                 polinomioBase *= (pontoDesejado - x[j]) / (x[i] - x[j])
@@ -14,12 +14,12 @@ def metodoLagrange(x, y, pontoDesejado):
 
 def metodoNewton(x, y, pontoDesejado):#x (pesos) e y (tempos), pontoDesejado (peso do peru) (ponto que desejamos interpolar)
     tamanho = len(x)
-    F = np.zeros((tamanho, tamanho))#F é a matriz de diferenças divididas (tamanho x tamanho) 
+    F = np.zeros((tamanho, tamanho))#F (matriz de diferenças divididas) (tamanho x tamanho) 
     F[:, 0] = y                     #primeira coluna da matriz F é o vetor y (tempos) 
     for j in range(1, tamanho):   
         for i in range(tamanho - j): 
             F[i, j] = (F[i+1, j-1] - F[i, j-1]) / (x[i+j] - x[i]) # F[i, j] é a diferença dividida de ordem j em x[i]
-    resultado, produto = F[0, 0], 1.0 
+    resultado, produto = F[0, 0], 1.0  
     for i in range(1, tamanho):  
         produto *= (pontoDesejado - x[i-1])    #produto dos polinomios de newton
         resultado += F[0, i] * produto #       resultado do metodo de newton
