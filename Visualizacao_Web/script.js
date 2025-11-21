@@ -667,3 +667,366 @@ async function startTwoTanks() {
         await new Promise(r => setTimeout(r, 20)); // Animation speed
     }
 }
+
+// ==========================================
+// EXAMPLES SECTION CHARTS
+// ==========================================
+
+// Global chart instances for examples section
+let exampleCharts = {
+    linear: null,
+    leastSquares: null,
+    markov: null,
+    interpolation: null,
+    optimization: null,
+    autodiff: null,
+    dynamics: null
+};
+
+// Modify showSection to initialize example charts when Examples section is shown
+const originalShowSection = showSection;
+showSection = function(sectionId) {
+    originalShowSection(sectionId);
+    if (sectionId === 'examples') {
+        setTimeout(() => {
+            if (!exampleCharts.linear) initAllExampleCharts();
+        }, 100);
+    }
+};
+
+// Initialize all example charts
+function initAllExampleCharts() {
+    initChartLinear();
+    initChartLeastSquares();
+    initChartMarkov();
+    initChartInterpolation();
+    initChartOptimization();
+    initChartAutoDiff();
+    initChartDynamics();
+}
+
+// 1. Linear Systems Chart (Bar chart of solution)
+function initChartLinear() {
+    const ctx = document.getElementById('chartLinear');
+    if (!ctx) return;
+    exampleCharts.linear = new Chart(ctx.getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Brinquedo 1', 'Brinquedo 2', 'Brinquedo 3'],
+            datasets: [{
+                label: 'Fluxo de Crianças',
+                data: [6.67, 11.67, 4.17],
+                backgroundColor: ['#60a5fa', '#34d399', '#fbbf24']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Solução do Sistema Linear (Fluxo nos Brinquedos)',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Fluxo', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
+
+// 2. Least Squares Chart (Observed vs Predicted)
+function initChartLeastSquares() {
+    const ctx = document.getElementById('chartLeastSquares');
+    if (!ctx) return;
+    exampleCharts.leastSquares = new Chart(ctx.getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Amostra 1', 'Amostra 2', 'Amostra 3'],
+            datasets: [
+                {
+                    label: 'Observado',
+                    data: [24.3, 15.0, 26.2],
+                    backgroundColor: '#60a5fa'
+                },
+                {
+                    label: 'Predito',
+                    data: [24.3, 15.45, 26.25],
+                    backgroundColor: '#34d399'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Análise Química: Observado vs Predito',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Concentração (%)', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
+
+// 3. Markov Chains Chart (Steady state probabilities)
+function initChartMarkov() {
+    const ctx = document.getElementById('chartMarkov');
+    if (!ctx) return;
+    exampleCharts.markov = new Chart(ctx.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Preferem Sim (66.67%)', 'Preferem Não (33.33%)'],
+            datasets: [{
+                data: [66.67, 33.33],
+                backgroundColor: ['#ec4899', '#8b5cf6']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Estado Estacionário - Sorveteria',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            }
+        }
+    });
+}
+
+// 4. Interpolation Chart (Data points and curve)
+function initChartInterpolation() {
+    const ctx = document.getElementById('chartInterpolation');
+    if (!ctx) return;
+    
+    const years = [1990, 1991, 1992, 1993, 1994, 1995, 1996];
+    const production = [62.4, 67.7, 75.9, 87.4, 97.4, 105.3, 113.2];
+    
+    exampleCharts.interpolation = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Produção de Aço (Lagrange)',
+                data: production,
+                borderColor: '#06b6d4',
+                backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                pointRadius: 5,
+                pointBackgroundColor: '#06b6d4',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Interpolação de Lagrange - Produção de Aço',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    title: { display: true, text: 'Produção (milhões ton)', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    title: { display: true, text: 'Ano', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
+
+// 5. Optimization Chart (Convergence)
+function initChartOptimization() {
+    const ctx = document.getElementById('chartOptimization');
+    if (!ctx) return;
+    
+    const iterations = Array.from({length: 21}, (_, i) => i);
+    const fVals = [];
+    let x = 0;
+    for (let i = 0; i < 21; i++) {
+        fVals.push(x**2 - 4*x + 4);
+        x = x - 0.1 * (2*x - 4);
+    }
+    
+    exampleCharts.optimization = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: iterations,
+            datasets: [{
+                label: 'f(x) = x² - 4x + 4',
+                data: fVals,
+                borderColor: '#a855f7',
+                backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                pointRadius: 3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Convergência do Gradiente Descendente',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    title: { display: true, text: 'f(x)', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    title: { display: true, text: 'Iteração', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
+
+// 6. AutoDiff Chart (Partial derivatives)
+function initChartAutoDiff() {
+    const ctx = document.getElementById('chartAutoDiff');
+    if (!ctx) return;
+    exampleCharts.autodiff = new Chart(ctx.getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['∂f/∂x', '∂f/∂y', '∂f/∂z'],
+            datasets: [{
+                label: 'Derivadas Parciais',
+                data: [5.2, 4.4, -3.44],
+                backgroundColor: ['#6366f1', '#8b5cf6', '#ec4899']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Derivadas Parciais em (2, 3, 5)',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    title: { display: true, text: 'Valor da Derivada', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
+
+// 7. Dynamic Systems Chart (Tanks over time)
+function initChartDynamics() {
+    const ctx = document.getElementById('chartDynamics');
+    if (!ctx) return;
+    
+    // Generate tank dynamics data
+    const time = [];
+    const tankA = [];
+    const tankB = [];
+    let x = 100, y = 0;
+    for (let t = 0; t <= 50; t++) {
+        time.push(t);
+        tankA.push(x);
+        tankB.push(y);
+        for (let i = 0; i < 10; i++) {
+            const dx = 0.05*y - 0.1*x;
+            const dy = 0.1*x - 0.05*y;
+            x += dx * 0.1;
+            y += dy * 0.1;
+        }
+    }
+    
+    exampleCharts.dynamics = new Chart(ctx.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: time,
+            datasets: [
+                {
+                    label: 'Tanque A (sal)',
+                    data: tankA,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    pointRadius: 0,
+                    borderWidth: 2
+                },
+                {
+                    label: 'Tanque B (sal)',
+                    data: tankB,
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    pointRadius: 0,
+                    borderWidth: 2
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Dois Tanques - Dinâmica do Sistema',
+                    color: '#fff'
+                },
+                legend: { labels: { color: '#fff' } }
+            },
+            scales: {
+                y: {
+                    title: { display: true, text: 'Quantidade de Sal (kg)', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                },
+                x: {
+                    title: { display: true, text: 'Tempo (s)', color: '#fff' },
+                    ticks: { color: '#fff' },
+                    grid: { color: '#374151' }
+                }
+            }
+        }
+    });
+}
